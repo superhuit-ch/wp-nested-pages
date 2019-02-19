@@ -59,8 +59,8 @@ class AdminSubmenuExpander
 	*/
 	private function nestedPagesAll($type)
 	{
-		if ( $this->page->id == 'toplevel_page_nestedpages' ){
-			echo '<script>jQuery(document).ready(function(){jQuery("#toplevel_page_nestedpages").removeClass("wp-not-current-submenu").addClass("wp-has-current-submenu").addClass("wp-menu-open");jQuery("#toplevel_page_nestedpages a:first").addClass("wp-has-current-submenu");var addnew = jQuery("#toplevel_page_nestedpages ul li:nth-child(2)");jQuery(addnew).addClass("current");jQuery(addnew).children("a").addClass("current");});</script>';
+		if ( ($this->page->id == $type->name) && ($this->page->action !== 'add') ){
+			echo '<script>jQuery(document).ready(function(){jQuery("#toplevel_page_nestedpages-' . esc_attr( $type->name ) . '").removeClass("wp-not-current-submenu").addClass("wp-has-current-submenu").addClass("wp-menu-open");jQuery("#toplevel_page_nestedpages-' . esc_attr( $type->name ) . ' a:first").addClass("wp-has-current-submenu");var current = jQuery("#toplevel_page_nestedpages-' . esc_attr( $type->name ) . ' ul li:nth-child(2)");jQuery(current).addClass("current");jQuery(current).children("a").addClass("current");});</script>';
 		}
 	}
 
